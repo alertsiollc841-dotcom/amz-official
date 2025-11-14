@@ -262,21 +262,20 @@ footer{
 
   // Show modal after delay
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      overlay.classList.add('show');
-      overlay.setAttribute('aria-hidden', 'false');
 
-      // Focus button automatically
-      btnContact.focus();
+    overlay.classList.add('show');
+    overlay.setAttribute('aria-hidden', 'false');
 
-      // Card reveal animation
-      const cards = document.querySelectorAll('.card');
-      cards.forEach((c, i) => {
-        setTimeout(()=>c.classList.add('show'), 80 * i);
-      });
+    // Focus "Call Now" button instantly
+    btnContact.focus();
 
-    }, 300);
-  });
+    // Reveal cards instantly with animation
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((c, i) => {
+      setTimeout(()=>c.classList.add('show'), 50 * i);
+    });
+
+});
 
   // Click-to-call: "Call Now" button
   btnContact.addEventListener('click', () => {
