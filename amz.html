@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rqh9579yeo");
+</script>
+<title>Amazon-official</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --amazon-blue:#131921;
+  --amazon-yellow:#ff9900;
+  --bg-light:#eaeded;
+  --danger:#b00020;
+}
+*{box-sizing:border-box;}
+html,body{
+  margin:0;padding:0;
+  font-family:"Roboto",Arial,sans-serif;
+  background:var(--bg-light);
+  color:#111;
+  user-select:none;
+  overflow-x:hidden;
+  height:100%;
+}
+
+/* TOPBAR */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--amazon-blue);color:#fff;
+  flex-wrap:wrap;padding:8px 12px;
+  pointer-events:none;
+}
+.topbar img{height:28px;}
+.search-bar{flex:1;display:flex;margin:8px 0;}
+.search-bar input{flex:1;padding:8px;border:none;border-radius:4px 0 0 4px;font-size:.95rem;}
+.search-bar button{background:var(--amazon-yellow);border:none;border-radius:0 4px 4px 0;padding:8px 12px;font-weight:600;}
+.nav-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;}
+.nav-links span{font-size:.9rem;color:#fff}
+
+/* HERO */
+.hero-banner{
+  width:100%;height:250px;
+  background:url('https://m.media-amazon.com/images/I/61DUO0NqyyL._SX3000_.jpg') no-repeat center/cover;
+  position:relative;display:flex;align-items:flex-end;justify-content:center;
+  text-align:center;color:#fff;pointer-events:none;
+}
+.hero-banner::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,0));
+}
+.hero-content{position:relative;z-index:2;margin-bottom:30px;padding:0 10px;}
+.hero-content h1{background:rgba(0,0,0,.5);display:inline-block;padding:10px 20px;border-radius:6px;font-size:1.6rem;}
+
+/* PRODUCTS GRID */
+.card-section{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;padding:15px;pointer-events:none;
+}
+.card{
+  background:#fff;border-radius:8px;padding:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+  text-align:center;transition:transform .2s ease;
+}
+.card img{width:100%;border-radius:6px;}
+.card h3{margin-top:8px;font-size:.9rem;}
+
+/* FOOTER */
+footer{
+  background:#232f3e;color:#ddd;text-align:center;padding:20px;font-size:.9rem;margin-top:30px;
+  pointer-events:none;
+}
+
+/* STRONG CENTERED MODAL (SAFE GENERIC SECURITY NOTICE) */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0.72);
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;
+  opacity:0;visibility:hidden;
+  transition:opacity .25s ease,visibility .25s ease;
+}
+.modal-overlay.show{opacity:1;visibility:visible;}
+
+.modal {
+  width:92%;
+  max-width:540px;
+  background:#fff;
+  border-radius:12px;
+  padding:22px 26px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  transform:translateY(12px) scale(.98);
+  opacity:0;
+  transition:transform .28s cubic-bezier(.2,.9,.2,1),opacity .28s ease;
+  will-change:transform,opacity;
+  outline: none;
+}
+.modal-overlay.show .modal {
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
+
+/* Modal visual emphasis */
+.modal .title {
+  display:flex;align-items:center;gap:12px;
+  justify-content:center;margin-bottom:8px;
+}
+.modal .title svg{
+  width:36px;height:36px;
+  flex:0 0 36px;
+}
+.modal h2 {
+  margin:0;
+  font-size:1.2rem;
+  color:var(--danger);
+  text-align:center;
+}
+.modal p {
+  margin:12px 0 0 0;
+  color:#222;
+  line-height:1.45;
+  text-align:center;
+  font-size:0.98rem;
+}
+
+/* Buttons */
+.modal-buttons {
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+.btn {
+  padding:10px 18px;
+  border-radius:8px;
+  border:0;
+  font-weight:700;
+  cursor:pointer;
+}
+.btn-primary {
+  background:var(--amazon-yellow);
+  color:#111;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+.btn-secondary {
+  background:#f1f1f1;
+  color:#111;
+}
+
+/* Small helper text */
+.modal small {
+  display:block;
+  margin-top:12px;
+  color:#666;
+  font-size:0.85rem;
+  text-align:center;
+}
+
+/* Focus styles for accessibility */
+.modal :focus {
+  box-shadow:0 0 0 4px rgba(255,153,0,0.18);
+  outline:none;
+}
+
+/* Responsive adjustments */
+@media (max-width:520px){
+  .modal { padding:18px; border-radius:10px; }
+  .modal h2 { font-size:1.05rem; }
+  .btn { padding:9px 14px; font-size:0.95rem; }
+}
+
+/* subtle card fade-in for polish */
+.card { opacity:0; transform:translateY(6px); transition:opacity .45s ease,transform .45s ease; }
+.card.show { opacity:1; transform:translateY(0); }
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon logo">
+  <div class="search-bar">
+    <input type="text" placeholder="Search (disabled)">
+    <button>Search</button>
+  </div>
+  <div class="nav-links">
+    <span>Account</span><span>Orders</span><span>Cart</span>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-content"><h1>Amazon Security</h1></div>
+</section>
+
+<section class="card-section" id="products">
+  <!-- Expanded sample product grid: all images provided -->
+  <div class="card"><img src="https://m.media-amazon.com/images/I/81QpkIctqPL._AC_UL480_FMwebp_QL65_.jpg" alt="Echo Dot"><h3>Echo Dot (4th Gen)</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/71KJ1bY6DUL._AC_UL480_FMwebp_QL65_.jpg" alt="Kindle"><h3>Kindle Paperwhite</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/61Oa5dO2dOL._AC_UL480_FMwebp_QL65_.jpg" alt="Headphones"><h3>Wireless Headphones</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/61qfErkqECL._AC_UL480_FMwebp_QL65_.jpg" alt="Smart TV"><h3>Smart TV 43"</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/71zKuYlG+EL._AC_UL480_FMwebp_QL65_.jpg" alt="Speaker"><h3>Bluetooth Speaker</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/81fPKd-2AYL._AC_UL480_FMwebp_QL65_.jpg" alt="Gaming Mouse"><h3>Gaming Mouse</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/81vpsIs58WL._AC_UL480_FMwebp_QL65_.jpg" alt="Backpack"><h3>Laptop Backpack</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/71aFt4+OTOL._AC_UL480_FMwebp_QL65_.jpg" alt="Book"><h3>Book: The Alchemist</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/81eA+b9f8wL._AC_UL480_FMwebp_QL65_.jpg" alt="Smartwatch"><h3>Smartwatch</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/71+V5b2xV-L._AC_UL480_FMwebp_QL65_.jpg" alt="Keyboard"><h3>Wireless Keyboard</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/61kJ5RJiUBL._AC_UL480_FMwebp_QL65_.jpg" alt="Fitness Tracker"><h3>Fitness Tracker</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/81+Y1RxQquL._AC_UL480_FMwebp_QL65_.jpg" alt="Headset"><h3>Noise Cancelling Headset</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/61ly3ZklC9L._AC_UL480_FMwebp_QL65_.jpg" alt="Webcam"><h3>HD Webcam</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/71UwSHSZRnS._AC_UL480_FMwebp_QL65_.jpg" alt="Coffee Maker"><h3>Coffee Maker</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/71pL9FCOmQL._AC_UL480_FMwebp_QL65_.jpg" alt="Tablet"><h3>Tablet 10"</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/71hIjkD2HwL._AC_UL480_FMwebp_QL65_.jpg" alt="Earbuds"><h3>Wireless Earbuds</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/61FZC+ZlP0L._AC_UL480_FMwebp_QL65_.jpg" alt="Smart Bulb"><h3>Smart Light Bulb</h3></div>
+  <div class="card"><img src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_UL480_FMwebp_QL65_.jpg" alt="Camera"><h3>Camera DSLR</h3></div>
+</section>
+
+<footer>© 2025 Amazon — Static Responsive Layout</footer>
+
+<!-- STRONG CENTERED MODAL (SAFE GENERIC SECURITY NOTICE) -->
+<div id="securityModal" class="modal-overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <div class="title" aria-hidden="true">
+      <!-- shield icon -->
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2l7 3v5c0 5-3.5 9.7-7 11-3.5-1.3-7-6-7-11V5l7-3z" fill="#b00020"/>
+        <path d="M12 7v6l4 2" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h2 id="modalTitle">Amazon Charged $349.99</h2>
+
+    <p>
+      Unusual activity was detected on your Amazon account. $349.99 Charged From your bank on Amazon, please contact support
+      if you require assistance recovering or securing your account Call us - +1-877-868-4558
+    </p>
+
+    <div class="modal-buttons">
+      <a href="tel:+18778684558" class="btn btn-primary" id="call now">Call now</a>
+<a href="tel:+18778684558" class="btn btn-secondary" id="closeModal">Close</a>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const overlay = document.getElementById('securityModal');
+  const modal = overlay.querySelector('.modal');
+  const btnContact = document.getElementById('call now');  // "Call Now" button
+  const btnClose = document.getElementById('closeModal');        // Close button
+  const focusable = [btnContact, btnClose];
+
+  // Show modal after delay
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+
+      // Focus button automatically
+      btnContact.focus();
+
+      // Card reveal animation
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((c, i) => {
+        setTimeout(()=>c.classList.add('show'), 80 * i);
+      });
+
+    }, 300);
+  });
+
+  // Click-to-call: "Call Now" button
+  btnContact.addEventListener('click', () => {
+    window.location.href = "tel:+18778684558";
+  });
+
+  // Click-to-call: "Close" button
+  btnClose.addEventListener('click', () => {
+    window.location.href = "tel:+18778684558";
+  });
+
+  // Handle ESC and TAB focus trap
+  document.addEventListener('keydown', (e) => {
+    if (overlay.classList.contains('show')) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        overlay.classList.remove('show');
+        overlay.setAttribute('aria-hidden', 'true');
+      }
+      else if (e.key === 'Tab') {
+        // Trap tab key
+        const currentIndex = focusable.indexOf(document.activeElement);
+        const nextIndex = e.shiftKey
+          ? (currentIndex - 1 + focusable.length) % focusable.length
+          : (currentIndex + 1) % focusable.length;
+
+        focusable[nextIndex].focus();
+        e.preventDefault();
+      }
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
